@@ -1,12 +1,12 @@
 SOURCEDIR = src
-SOURCES = main.c
+SOURCES = main.c net.c p2p.c
 
 INCLUDE_DIRS = include
 
 OBJDIR = build
 OBJS := $(addprefix $(OBJDIR)/,$(SOURCES:%.c=%.o))
 
-CFLAGS += -MMD -Wall -std=c11 -ggdb $(addprefix -I,$(INCLUDE_DIRS))
+CFLAGS += -MMD -Wall -std=c11 -ggdb $(addprefix -I,$(INCLUDE_DIRS)) -D_XOPEN_SOURCE=600
 LDFLAGS +=
 
 .PHONY: debug
