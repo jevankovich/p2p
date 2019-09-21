@@ -10,6 +10,7 @@
 int open_control_socket(in_port_t *port)
 {
     struct sockaddr_in6 addr;
+    socklen_t socklen = sizeof(addr);
     int sock;
     int err;
 
@@ -28,7 +29,7 @@ int open_control_socket(in_port_t *port)
         return -1;
     }
 
-    err = getsockname(sock, &addr, sizeof(addr));
+    err = getsockname(sock, (struct sockaddr *)&addr, &socklen);
     if (err == -1) {
         return -1;
     }
