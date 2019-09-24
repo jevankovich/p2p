@@ -10,7 +10,8 @@ CFLAGS += -MMD -Wall -Wpedantic -std=c11 -ggdb $(addprefix -I,$(INCLUDE_DIRS)) -
 LDFLAGS +=
 
 .PHONY: debug
-debug: CFLAGS += -Og -DDEBUG
+debug: CFLAGS += -Og -DDEBUG -fsanitize=undefined -fsanitize=address
+debug: LDFLAGS += -fsanitize=undefined -fsanitize=address
 debug: $(OBJDIR)/main
 
 .PHONY: release
