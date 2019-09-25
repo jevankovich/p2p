@@ -9,9 +9,13 @@ OBJS := $(addprefix $(OBJDIR)/,$(SOURCES:%.c=%.o))
 CFLAGS += -MMD -Wall -Wpedantic -std=c11 -ggdb $(addprefix -I,$(INCLUDE_DIRS)) -D_XOPEN_SOURCE=600
 LDFLAGS +=
 
+.PHONY: debug-sanitize
+debug-sanitize: CFLAGS += -fsanitize=undefined -fsanitize=address
+debug-sanitize: LDFLAGS += -fsanitize=undefined -fsanitize=address
+debug-sanitize: debug
+
 .PHONY: debug
-debug: CFLAGS += -Og -DDEBUG -fsanitize=undefined -fsanitize=address
-debug: LDFLAGS += -fsanitize=undefined -fsanitize=address
+debug: CFLAGS += -Og -DDEBUG
 debug: $(OBJDIR)/main
 
 .PHONY: release
