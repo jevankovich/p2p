@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "includePath": ["${workspaceFolder}/include"],
+            "defines": ["_XOPEN_SOURCE=600"],
+            "compilerArgs": [
+                "-Wall",
+                "-Wpedantic"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
